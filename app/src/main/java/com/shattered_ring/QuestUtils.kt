@@ -390,7 +390,7 @@ class QuestUtils {
                     Text(text="Complete", fontSize = 14.sp, modifier=Modifier.padding(start=20.dp)
                         .constrainAs(complete) {
                             start.linkTo(parent.start)
-                            top.linkTo(parent.top)
+                            top.linkTo(name.bottom)
                         } )
                 } else {
                     Text(text="Not Complete", fontSize = 14.sp, modifier=Modifier.padding(start=20.dp)
