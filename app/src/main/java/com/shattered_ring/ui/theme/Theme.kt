@@ -1,15 +1,14 @@
 package com.shattered_ring.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.darkColors
-import androidx.compose.material.lightColors
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.text.TextStyle
 
 private val DarkColorPalette = darkColors(
     primary = ShatteredRingGreen,
     primaryVariant = ShatteredRingOtherGreen,
-    secondary = ShatteredRingYellow
+    secondary = ShatteredRingYellow,
 )
 
 private val LightColorPalette = lightColors(
@@ -42,6 +41,12 @@ fun ShatteredRingTheme(
         colors = colors,
         typography = Typography,
         shapes = Shapes,
-        content = content
+        content = {
+            ProvideTextStyle(
+                value = TextStyle(color = ShatteredRingYellow),
+                content = content
+            )
+        }
     )
+
 }
