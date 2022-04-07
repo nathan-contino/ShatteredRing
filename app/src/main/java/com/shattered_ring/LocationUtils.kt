@@ -445,6 +445,7 @@ class LocationUtils {
         ) {
             ConstraintLayout {
                 val (title, cleared, smith, merchant, notes) = createRefs()
+                var lastBeforeNotes = cleared
                 Text(text=location.name, fontSize = 20.sp, modifier=Modifier.padding(top=10.dp, start=10.dp)
                     .constrainAs(title) {
                         start.linkTo(parent.start)
@@ -464,6 +465,7 @@ class LocationUtils {
                         } )
                 }
                 if (location.hasSmithAnvil) {
+                    lastBeforeNotes = smith
                     Text(text="Has Smith", fontSize = 14.sp, modifier=Modifier.padding(start=20.dp)
                         .constrainAs(smith) {
                             start.linkTo(parent.start)
@@ -471,6 +473,7 @@ class LocationUtils {
                         })
                 }
                 if (location.hasMerchant) {
+                    lastBeforeNotes = merchant
                     Text(text="Has Merchant", fontSize = 14.sp, modifier=Modifier.padding(start=20.dp)
                         .constrainAs(merchant) {
                             start.linkTo(parent.start)
@@ -479,6 +482,7 @@ class LocationUtils {
                 }
                 Text(text=location.notes, fontSize = 14.sp, modifier=Modifier.padding(start=20.dp)
                     .constrainAs(notes) {
+                        top.linkTo(lastBeforeNotes.bottom)
                         end.linkTo(parent.end)
                         bottom.linkTo(parent.bottom)
                     } )
